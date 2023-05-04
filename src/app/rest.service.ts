@@ -21,4 +21,5 @@ export class RestService {
   public singleCharacter(query:string):Observable<character>{
     return this.http.get<character>(this.apiUrl + '?name=' + query);
   }
+  //jsjjsdjsjds
 }
