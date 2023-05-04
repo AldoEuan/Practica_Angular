@@ -1,0 +1,27 @@
+
+
+<div class="container text-center paginas" style="display: flex; justify-content: center; align-items: center; margin-top: 25px; margin: bottom 25px ;">
+    
+    <h1 class="titulo">Fondos de Rick y Morty</h1>
+     
+  </div>
+  <div class="container text-center" >
+    <br>
+    <div class="row">
+      <div class="col-md-3" *ngFor="let character of listcharacters">
+        <div
+          class="card"
+          style="width: 18rem"
+        >
+          <img src="{{ character.image }}" class="card-img-top" alt="..." />
+           
+        </div>
+        <div class="card-body">
+            <hr>
+            <button class="btn btn-success"> Descargar</button>
+        </div>
+        <br> <br>
+      </div>
+    </div>
+     
+  </div>

@@ -1,0 +1,79 @@
+<style>
+  .txt {
+    font-family: "Poppins", sans-serif;
+  }
+</style>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand txt" href="#">Api Rick And Morty</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link txt" href="caps">Capitulos Completos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link txt" href="walpp">Fondos de Pantalla</a>
+        </li>
+      </ul>
+      <form
+        class="d-flex"
+        [formGroup]="formsearch"
+        (submit)="buscador()"
+        role="search"
+      >
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search Character"
+          formControlName="control"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="container text-center">
+  <br />
+  <div class="row">
+    <p *ngIf="status">Resultado de la busqueda " {{bodyb}} "</p>
+    <div class="col-md-3" *ngFor="let character of filtercharacters">
+      <div class="card" style="width: 18rem">
+        <img src="{{ character.image }}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ character.name }}</h5>
+          <p class="card-text">
+            <ng-container *ngIf="character.status === 'Alive'">
+              <i class="uil uil-circle" style="color: greenyellow;"></i>
+            </ng-container>
+            <ng-container *ngIf="character.status === 'Dead'">
+              <i class="uil uil-circle" style="color: red;"></i>
+            </ng-container>
+            <ng-container *ngIf="character.status === 'unknown'">
+              <i class="uil uil-circle" style="color: darkorange;"></i>
+            </ng-container>
+            {{ character.status }} - {{ character.species }}
+          </p>
+          <p class="subt">Visto Por Ultima Vez</p>
+          <p class="card-text">{{ character.location.name }}</p>
+          <p class="subt">Primera Aparición</p>
+          <p class="card-text">{{ character.origin.name }}</p>
+        </div>
+      </div>
+      <br />
+      <br />
+    </div>
+  </div>
+</div> 
+<router-outlet></router-outlet>

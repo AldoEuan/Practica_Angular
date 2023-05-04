@@ -1,0 +1,48 @@
+<body style="background-color:   #272b33;">
+  
+
+<div class="container text-center paginas" style="display: flex; justify-content: center; align-items: center; margin-top: 25px; margin: bottom 25px ;">
+
+  <div class="pagination" style="margin-top:25px;">
+    <button class="btn btn-secondary" [ngClass]="{ 'disabled': currentPage === 1 }" (click)="previousPage()" *ngIf="currentPage > 1">Anterior</button>
+    <button class="btn btn-primary"  (click)="nextPage()"  >Siguiente</button>
+  </div>
+</div>
+<div class="container text-center" style="background-color:#272b33; ">
+  <br>
+  <div class="row">
+    <div class="col-md-3" *ngFor="let character of listcharacters">
+      <div
+        class="card"
+        style="width: 18rem"
+      >
+        <img src="{{ character.image }}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ character.name }}</h5>
+          <p class="card-text">
+            <ng-container *ngIf="character.status === 'Alive'">
+              <i class="uil uil-circle" style="color: greenyellow;"></i>
+            </ng-container>
+            <ng-container *ngIf="character.status === 'Dead'">
+              <i class="uil uil-circle" style="color: red;"></i>
+            </ng-container>
+            <ng-container *ngIf="character.status === 'unknown'">
+              <i class="uil uil-circle" style="color: darkorange;"></i>
+            </ng-container>
+            {{ character.status }} - {{ character.species }}
+          </p>
+          <p class="subt">Visto Por Ultima Vez</p>
+          <p class="card-text">{{ character.location.name }}</p>
+          <p class="subt">Primera Aparición</p>
+          <p class="card-text">{{ character.origin.name }}</p>
+        </div>
+      </div>
+      <br> <br>
+    </div>
+  </div>
+  <div class="container text-center paginas" style="display: flex; justify-content: center; align-items: center; margin-top: 25px;padding-bottom: 25px;">
+    <button class="btn btn-secondary" [ngClass]="{ 'disabled': currentPage === 1 }" (click)="previousPage()" *ngIf="currentPage > 1">Anterior</button>
+    <button class="btn btn-primary"  (click)="nextPage()"  >Siguiente</button>
+  </div>
+</div>
+</body>
